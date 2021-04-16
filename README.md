@@ -1,7 +1,5 @@
-# ExperienceX
-
 # About ExperienceX
-ExperienceX is a plugin! Have 5 commands.
+ExperienceX is a plugin! Have 10 commands.
 
  # Requirements
 EssentialsX currently supports CraftBukkit, Spigot. Other server implementations may work, but we don't recommend them as they may cause compatibility issues.
