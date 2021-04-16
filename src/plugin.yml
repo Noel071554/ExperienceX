@@ -1,20 +1,18 @@
 main: me.noel.hu.ExperienceX
-version: 1.1
+version: 1.2
 name: ExperienceX
 author: Noel
 
 commands:
   mobstick:
     description: MobStick
-    aliases: [mstick]
   extroll:
     description: Troll command
-    aliases: [t]
   liferod:
-    aliases: [lr, lrod]
     description: Liferod
   playerinfo:
     description: Playerinfo
   exhelp:
     description: Help of the ExperienceX plugin
-    aliases: [exh, helpexperiencex]
+  exgm:
+    description: Switch your gamemode
