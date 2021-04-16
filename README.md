@@ -9,11 +9,12 @@ EssentialsX currently supports CraftBukkit, Spigot. Other server implementations
 /troll
 /liferod
 /playerinfo
-/exgm <1, 2, 3, 4> [NOT RELEASED]
+/exgm <1, 2, 3, 4>
 /exdifficulty <easy, normal, hard, peaceful> [NOT RELEASED]
 /exkick <name> <reason> [NOT RELEASED]
 /exban <name> <reason> [NOT RELEASED]
 /extempban <name> <time> <reason> [NOT RELEASED]
+/exfly [NOT RELEASED]
 /exhelp
 
 More coming soon..
