@@ -34,7 +34,16 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
 
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
-        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "This plugin has started!");
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.DARK_GREEN + "ExperienceX" + ChatColor.GREEN + "] " + ChatColor.DARK_GREEN + "----------------------------------------------");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2+===============+");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2|  ExperienceX  |");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2|---------------|");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2|     Plugin    |");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2+===============+");
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.DARK_GREEN + "ExperienceX" + ChatColor.GREEN + "] " + ChatColor.DARK_GREEN + "----------------------------------------------");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2Current version: 1.2");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2This is the latest version!");
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.DARK_GREEN + "ExperienceX" + ChatColor.GREEN + "] " + ChatColor.DARK_GREEN + "----------------------------------------------");
     }
 	/*
 	private void getKozeliBlockok(Location loc) {
@@ -96,8 +105,40 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
         }
     }
 
+
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if(label.equalsIgnoreCase("exgm")){
+            Player p = (Player) sender;
+            if(p.hasPermission("experiencex.gamemode")){
+                if(args.length == 1){
+                    if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
+
+                        p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §bsurvival§3.");
+                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.setGameMode(GameMode.SURVIVAL);
+                    }else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
+
+                        p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §bcreative§3.");
+                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.setGameMode(GameMode.CREATIVE);
+                    }else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
+
+                        p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §badventure§3.");
+                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.setGameMode(GameMode.ADVENTURE);
+                    }else if(args[0].equalsIgnoreCase("3") || args[0].equalsIgnoreCase("spectator")) {
+
+                        p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §bspectator§3.");
+                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.setGameMode(GameMode.SPECTATOR);
+                    }
+                }else {
+                    p.sendMessage("§b------------------\nGamemodes: \n/exgm 0\n/exgm 1\n/exgm 2\n/exgm 3\n------------------");
+                }
+            }
+        }
         if(label.equalsIgnoreCase("exhelp")) {
             sender.sendMessage(ChatColor.GREEN + "----------- | " + ChatColor.DARK_GREEN + "[ExperienceX] " + ChatColor.GREEN + "| -----------");
             sender.sendMessage(ChatColor.DARK_GREEN + "/exhelp: " + ChatColor.GREEN + "Shows this help list");
@@ -105,6 +146,7 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
             sender.sendMessage(ChatColor.DARK_GREEN + "/mobstick: " + ChatColor.GREEN + "Gives you a stick");
             sender.sendMessage(ChatColor.DARK_GREEN + "/liferod: " + ChatColor.GREEN + "Gives you a liferod");
             sender.sendMessage(ChatColor.DARK_GREEN + "/playerinfo: " + ChatColor.GREEN + "Playerinfo of you");
+            sender.sendMessage(ChatColor.DARK_GREEN + "/exgm: " + ChatColor.GREEN + "Changes your gamemode");
             sender.sendMessage(ChatColor.DARK_GREEN + "--------------------------------------------");
         }
         if(label.equalsIgnoreCase("playerinfo")) {
@@ -123,6 +165,7 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
             sender.sendMessage("§aDone :)");
         }
         if(label.equalsIgnoreCase("mobstick")) {
+
             ItemStack bot = new ItemStack(Material.STICK,1);
             ItemMeta meta = bot.getItemMeta();
             meta.setDisplayName("§6MOBStick");
@@ -135,7 +178,7 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
                 if(args[0].equalsIgnoreCase("tnt")) {
                     Player target = Bukkit.getPlayer(args[1]);
                     target.getWorld().spawn(target.getLocation(), TNTPrimed.class);
-                    sender.sendMessage("§cDone :)"+target.getDisplayName());
+                    sender.sendMessage("§cDone :) "+target.getDisplayName());
                 }else if(args[0].equalsIgnoreCase("lava")) {
                     Player target = Bukkit.getPlayer(args[1]);
                     Location loc = target.getLocation();
@@ -151,7 +194,7 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
                         loc.setX(target.getLocation().getBlockX()+x);
                         loc.setZ(target.getLocation().getBlockZ()+z);
                         loc.getBlock().setType(Material.LAVA);
-                        sender.sendMessage("§cDone :)"+target.getDisplayName());
+                        sender.sendMessage("§cDone :) "+target.getDisplayName());
                     }
                 }
             }else {
