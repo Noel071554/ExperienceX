@@ -41,7 +41,7 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
         getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2|     Plugin    |");
         getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2+===============+");
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.DARK_GREEN + "ExperienceX" + ChatColor.GREEN + "] " + ChatColor.DARK_GREEN + "----------------------------------------------");
-        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2Current version: 1.2");
+        getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2Current version: 1.3");
         getServer().getConsoleSender().sendMessage("§a[§2ExperienceX§a]     §2This is the latest version!");
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.DARK_GREEN + "ExperienceX" + ChatColor.GREEN + "] " + ChatColor.DARK_GREEN + "----------------------------------------------");
     }
@@ -116,26 +116,76 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
                     if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
 
                         p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §bsurvival§3.");
-                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                         p.setGameMode(GameMode.SURVIVAL);
                     }else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 
                         p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §bcreative§3.");
-                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                         p.setGameMode(GameMode.CREATIVE);
                     }else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
 
                         p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §badventure§3.");
-                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                         p.setGameMode(GameMode.ADVENTURE);
                     }else if(args[0].equalsIgnoreCase("3") || args[0].equalsIgnoreCase("spectator")) {
 
                         p.sendMessage(p.getDisplayName() + "§3 game mode switched to this: §bspectator§3.");
-                        p.playSound(p.getLocation(), Sound.BLOCK_BEACON_DEACTIVATE, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                         p.setGameMode(GameMode.SPECTATOR);
                     }
                 }else {
                     p.sendMessage("§b------------------\nGamemodes: \n/exgm 0\n/exgm 1\n/exgm 2\n/exgm 3\n------------------");
+                }
+            }
+        }
+        if(label.equalsIgnoreCase("exdifficulty")){
+            Player p = (Player) sender;
+            if(p.hasPermission("experiencex.difficulty")){
+                if(args.length == 1){
+                    if(args[0].equalsIgnoreCase("peaceful") || args[0].equalsIgnoreCase("0")){
+
+                        p.sendMessage("§3Difficulty is changed to this: §bpeaceful§3.");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                        p.getWorld().setDifficulty(Difficulty.PEACEFUL);
+                    }else if(args[0].equalsIgnoreCase("easy") || args[0].equalsIgnoreCase("1")){
+
+                        p.sendMessage("§3Difficulty is changed to this: §beasy§3.");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                        p.getWorld().setDifficulty(Difficulty.EASY);
+                    }else if(args[0].equalsIgnoreCase("normal") || args[0].equalsIgnoreCase("2")){
+
+                        p.sendMessage("§3Difficulty is changed to this: §bnormal§3.");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                        p.getWorld().setDifficulty(Difficulty.NORMAL);
+                    }else if(args[0].equalsIgnoreCase("hard") || args[0].equalsIgnoreCase("3")){
+
+                        p.sendMessage("§3Difficulty is changed to this: §bhard§3.");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                        p.getWorld().setDifficulty(Difficulty.HARD);
+                    }
+                }else {
+                    p.sendMessage("§b------------------\nDifficulty: \n/exdifficulty 0\n/exdifficulty 1\n/exdifficulty 2\n/exdifficulty 3\n------------------");
+                }
+            }
+        }
+        if(label.equalsIgnoreCase("extime")){
+            Player p = (Player) sender;
+            if(p.hasPermission("experiencex.timeset")){
+                if(args.length == 1){
+                    if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("day")){
+
+                        p.sendMessage("§3Game time is switched to: §bday§3.");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                        p.getWorld().setTime(1000);
+                    }else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("night")){
+
+                        p.sendMessage("§3Game time is switched to: §bnight§3.");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                        p.getWorld().setTime(18000);
+                    }
+                }else {
+                    p.sendMessage("§b------------------\nTimes: \n/extime day\n/extime night\n------------------");
                 }
             }
         }
@@ -147,7 +197,9 @@ public class ExperienceX extends JavaPlugin implements Listener, CommandExecutor
             sender.sendMessage(ChatColor.DARK_GREEN + "/liferod: " + ChatColor.GREEN + "Gives you a liferod");
             sender.sendMessage(ChatColor.DARK_GREEN + "/playerinfo: " + ChatColor.GREEN + "Playerinfo of you");
             sender.sendMessage(ChatColor.DARK_GREEN + "/exgm: " + ChatColor.GREEN + "Changes your gamemode");
-            sender.sendMessage(ChatColor.DARK_GREEN + "--------------------------------------------");
+            sender.sendMessage(ChatColor.DARK_GREEN + "/exdifficulty: " + ChatColor.GREEN + "Changes game difficulty");
+            sender.sendMessage(ChatColor.DARK_GREEN + "/extime: " + ChatColor.GREEN + "Changes game time");
+            sender.sendMessage(ChatColor.GREEN + "-------------------------------------");
         }
         if(label.equalsIgnoreCase("playerinfo")) {
             sender.sendMessage(ChatColor.DARK_AQUA + "----------------------------------------");
