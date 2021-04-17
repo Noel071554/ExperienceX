@@ -1,5 +1,5 @@
 main: me.noel.hu.ExperienceX
-version: 1.2
+version: 1.3
 name: ExperienceX
 author: Noel
 
@@ -16,3 +16,7 @@ commands:
     description: Help of the ExperienceX plugin
   exgm:
     description: Switch your gamemode
+  exdifficulty:
+    description: Switch world's difficulty
+  extime:
+    description: Changes game time
